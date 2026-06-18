@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنتجات | Products — الشركة الدولية للصناعات | ICI Qatar</title>
+  <meta name="description" content="جميع منتجات الشركة الدولية للصناعات: ملح OCEAN 25kg، قارورة Al Rayyan، Jazeera 1kg، جامبو باج 1500kg، ومكعبات الأعلاف بـ 5 ألوان | All ICI salt products in Qatar.">
+  <meta name="keywords" content="ملح أوشن قطر, OCEAN salt 25kg, ملح الريان, Al Rayyan salt bottle, ملح الجزيرة, Jazeera salt, مكعبات ملح الأعلاف, salt feed cubes Qatar, jumbo bag salt">
+
+  <link rel="icon" type="image/png" href="assets/images/brand/logo-ici.png">
+  <link rel="canonical" href="https://icifactory.com/products.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <style>
+    .page-header {
+      padding: calc(var(--nav-height) + 60px) 0 60px;
+      background: linear-gradient(135deg, #FAF8F5 0%, #F4F2EE 100%);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .page-header::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(128,0,32,0.08) 0%, transparent 70%);
+    }
+    .page-header h1 { font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px; position: relative; }
+    .page-header p { font-size: 17px; color: var(--text-mid); max-width: 600px; margin: 0 auto; position: relative; }
+
+    .brand-section { padding: 80px 0; }
+    .brand-section:nth-child(odd) { background: var(--salt-white); }
+    .brand-section:nth-child(even) { background: var(--salt-cream); }
+
+    .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .brand-grid.reverse { direction: ltr; }
+    html[dir="rtl"] .brand-grid.reverse > * { direction: rtl; }
+
+    .brand-visual { aspect-ratio: 1; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--salt-white); display: flex; align-items: center; justify-content: center; padding: 40px; }
+    .brand-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+    /* Image carousel */
+    .brand-visual.carousel { padding: 0; position: relative; }
+    .carousel-track { position: relative; width: 100%; height: 100%; }
+    .carousel-slide {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: contain; padding: 40px;
+      opacity: 0; transition: opacity 0.7s ease; pointer-events: none;
+    }
+    .carousel-slide.active { opacity: 1; pointer-events: auto; }
+    .carousel-dots {
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 3;
+    }
+    .carousel-dot {
+      width: 10px; height: 10px; border-radius: 50%; padding: 0;
+      border: none; background: rgba(128,0,32,0.25); cursor: pointer;
+      transition: all 0.25s; outline: none;
+    }
+    .carousel-dot.active { background: var(--ici-red); width: 28px; border-radius: 5px; }
+    .carousel-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 38px; height: 38px; border-radius: 50%; border: none;
+      background: rgba(255,255,255,0.9); box-shadow: var(--shadow-sm);
+      color: var(--ici-red); font-size: 18px; cursor: pointer; z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .brand-visual.carousel:hover .carousel-arrow { opacity: 1; }
+    .carousel-arrow.prev { left: 14px; }
+    .carousel-arrow.next { right: 14px; }
+
+    .brand-info h2 { font-size: clamp(28px, 3.5vw, 42px); font-weight: 900; margin-bottom: 12px; }
+    .brand-info .brand-name { display: inline-block; font-size: 12px; font-weight: 800; color: var(--ici-red); letter-spacing: 0.2em; background: rgba(128,0,32,0.08); padding: 6px 14px; border-radius: 4px; margin-bottom: 16px; }
+    .brand-info p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 24px; }
+    .brand-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+    .spec-item { padding: 16px; background: var(--salt-cream); border-radius: 10px; border-right: 3px solid var(--ici-red); }
+    .spec-item .label { font-size: 11px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .spec-item .value { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-top: 4px; }
+    .brand-section:nth-child(even) .spec-item { background: var(--salt-white); }
+
+    .brand-uses { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+    .brand-uses li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--text-mid); }
+    .brand-uses li::before { content: '✓'; color: var(--ici-red); font-weight: 900; flex-shrink: 0; }
+
+    .industrial-section { background: var(--text-dark); color: var(--salt-white); padding: 100px 0; }
+    .industrial-section h2 { color: var(--salt-white); }
+
+    .industrial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .industrial-visual { aspect-ratio: 4/3; border-radius: 14px; overflow: hidden; }
+    .industrial-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+    .industrial-card {
+      background: rgba(255,255,255,0.05); padding: 32px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;
+    }
+    .industrial-card h3 { font-size: 20px; font-weight: 800; color: var(--salt-white); margin-bottom: 8px; }
+    .industrial-card p { color: rgba(255,255,255,0.7); font-size: 14px; line-height: 1.7; }
+    .industrial-card .weight-tag {
+      display: inline-block; background: var(--ici-red); color: var(--salt-white);
+      padding: 4px 12px; border-radius: 4px; font-size: 12px; font-weight: 700;
+      margin-bottom: 12px; letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .brand-grid, .industrial-grid { grid-template-columns: 1fr; }
+      .brand-specs { grid-template-columns: 1fr; }
+    }
+
+    .cubes-highlight {
+      display: flex; align-items: center; gap: 16px;
+      max-width: 760px; margin: 48px auto 0;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 14px;
+      padding: 22px 28px;
+    }
+    .cubes-highlight-icon { font-size: 28px; flex-shrink: 0; }
+    .cubes-highlight p {
+      font-size: 16px; font-weight: 600; color: var(--salt-white);
+      line-height: 1.7; margin: 0;
+    }
+    @media (max-width: 640px) {
+      .cubes-highlight { flex-direction: column; text-align: center; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV (same as index) -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/images/brand/logo-ici.png" alt="ICI Logo">
+      <div class="nav-logo-text">
+        <span class="ar" data-ar="الشركة الدولية للصناعات" data-en="International Industries Co.">الشركة الدولية للصناعات</span>
+        <span class="en" data-ar="ICI · صُنع في قطر" data-en="ICI · MADE IN QATAR">ICI · صُنع في قطر</span>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+      <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+      <li><a href="products.html" class="active" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
+      <li><a href="contact.html" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" type="button">EN</button>
+      <a href="contact.html" class="btn-cta" data-ar="اطلب عرض" data-en="Get Quote">اطلب عرض</a>
+      <button class="mobile-toggle" type="button"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <div class="container">
+    <h1 data-ar="منتجاتنا الكاملة" data-en="Our Complete Product Range">منتجاتنا الكاملة</h1>
+    <p data-ar="ثلاث علامات تجارية، ثلاث فئات منتج، حلول لكل احتياج — من المائدة المنزلية إلى المصانع الكبرى ومزارع الماشية." data-en="Three brand names, three product categories, solutions for every need — from household tables to large factories and livestock farms.">
+      ثلاث علامات تجارية، ثلاث فئات منتج، حلول لكل احتياج — من المائدة المنزلية إلى المصانع الكبرى ومزارع الماشية.
+    </p>
+  </div>
+</section>
+
+<!-- OCEAN BRAND -->
+<section class="brand-section" id="ocean">
+  <div class="container">
+    <div class="brand-grid">
+      <div class="brand-info" data-animate>
+        <span class="brand-name">OCEAN · أوشن</span>
+        <h2 data-ar="ملح OCEAN — للاستخدام الصناعي والتجاري" data-en="OCEAN Salt — Industrial & Commercial Use">ملح OCEAN — للاستخدام الصناعي والتجاري</h2>
+        <p data-ar="كيس صناعي وزن 25 كيلوغرام يحتوي ملح طعام عالي الجودة معالج باليود. مثالي للمصانع، المخابز، المطاعم الكبيرة، الفنادق، وقطاعات التموين المؤسسي." data-en="25 kg industrial bag containing high-quality iodized table salt. Ideal for factories, bakeries, large restaurants, hotels, and institutional catering sectors.">
+          كيس صناعي وزن 25 كيلوغرام يحتوي ملح طعام عالي الجودة معالج باليود. مثالي للمصانع، المخابز، المطاعم الكبيرة، الفنادق، وقطاعات التموين المؤسسي.
+        </p>
+
+        <div class="brand-specs">
+          <div class="spec-item">
+            <div class="label" data-ar="الوزن" data-en="Weight">الوزن</div>
+            <div class="value">25 KG</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="نسبة اليود" data-en="Iodine">نسبة اليود</div>
+            <div class="value">15 – 40 mg/kg</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="نوع التغليف" data-en="Packaging">نوع التغليف</div>
+            <div class="value" data-ar="كيس بلاستيك صناعي" data-en="Industrial Plastic Bag">كيس بلاستيك صناعي</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="بلد المنشأ" data-en="Origin">بلد المنشأ</div>
+            <div class="value" data-ar="🇶🇦 صنع في قطر" data-en="🇶🇦 Made in Qatar">🇶🇦 صنع في قطر</div>
+          </div>
+        </div>
+
+        <ul class="brand-uses">
+          <li data-ar="مخابز ومصانع الأغذية" data-en="Bakeries and food factories">مخابز ومصانع الأغذية</li>
+          <li data-ar="المطاعم الكبيرة وقطاع التموين" data-en="Large restaurants and catering sector">المطاعم الكبيرة وقطاع التموين</li>
+          <li data-ar="فنادق ومجمعات سكنية" data-en="Hotels and residential complexes">فنادق ومجمعات سكنية</li>
+          <li data-ar="مصانع الجبن واللحوم المعالجة" data-en="Cheese and processed meat factories">مصانع الجبن واللحوم المعالجة</li>
+        </ul>
+
+        <a href="contact.html?product=ocean" class="btn-primary" data-ar="اطلب عرض سعر ←" data-en="Get Quote →">اطلب عرض سعر ←</a>
+      </div>
+
+      <div class="brand-visual" data-animate>
+        <img src="assets/images/products/ocean-25kg.webp" alt="OCEAN Salt 25 KG Bag">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AL RAYYAN BRAND -->
+<section class="brand-section" id="alrayyan">
+  <div class="container">
+    <div class="brand-grid">
+      <div class="brand-visual carousel" data-animate>
+        <div class="carousel-track">
+          <img src="assets/images/products/alrayyan-bottle.webp" class="carousel-slide active" alt="Al Rayyan Pure Iodized Salt Bottle">
+          <img src="assets/images/products/alrayyan-stack.webp" class="carousel-slide" alt="Al Rayyan Salt Bottles Display">
+        </div>
+        <button class="carousel-arrow prev" aria-label="Previous">‹</button>
+        <button class="carousel-arrow next" aria-label="Next">›</button>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" data-slide="0" aria-label="Image 1"></button>
+          <button class="carousel-dot" data-slide="1" aria-label="Image 2"></button>
+        </div>
+      </div>
+
+      <div class="brand-info" data-animate>
+        <span class="brand-name">AL RAYYAN · الريان</span>
+        <h2 data-ar="قارورة الريان — لمائدة الأسرة" data-en="Al Rayyan Bottle — For Family Tables">قارورة الريان — لمائدة الأسرة</h2>
+        <p data-ar="قارورة بلاستيكية مميزة سعة 700 جرام لملح المائدة المعالج باليود النقي. تصميم أنيق يناسب المنازل، الفنادق الراقية، والمحلات التجارية المتميزة." data-en="Premium 700-gram plastic bottle for pure iodized table salt. Elegant design suitable for homes, fine hotels, and premium retail stores.">
+          قارورة بلاستيكية مميزة سعة 700 جرام لملح المائدة المعالج باليود النقي. تصميم أنيق يناسب المنازل، الفنادق الراقية، والمحلات التجارية المتميزة.
+        </p>
+
+        <div class="brand-specs">
+          <div class="spec-item">
+            <div class="label" data-ar="الوزن" data-en="Weight">الوزن</div>
+            <div class="value">700g</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="نوع الملح" data-en="Salt Type">نوع الملح</div>
+            <div class="value" data-ar="مائدة معالج باليود" data-en="Iodized Table">مائدة معالج باليود</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="التغليف" data-en="Packaging">التغليف</div>
+            <div class="value" data-ar="قارورة بلاستيكية" data-en="Plastic Bottle">قارورة بلاستيكية</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="اللغات على العبوة" data-en="Languages">اللغات على العبوة</div>
+            <div class="value">عربي / English</div>
+          </div>
+        </div>
+
+        <ul class="brand-uses">
+          <li data-ar="المنازل والمطابخ العائلية" data-en="Homes and family kitchens">المنازل والمطابخ العائلية</li>
+          <li data-ar="الفنادق والمنتجعات السياحية" data-en="Hotels and tourist resorts">الفنادق والمنتجعات السياحية</li>
+          <li data-ar="السوبر ماركت ومحلات التجزئة" data-en="Supermarkets and retail stores">السوبر ماركت ومحلات التجزئة</li>
+          <li data-ar="مطاعم متوسطة الحجم" data-en="Medium-sized restaurants">مطاعم متوسطة الحجم</li>
+        </ul>
+
+        <a href="contact.html?product=alrayyan" class="btn-primary" data-ar="اطلب عرض سعر ←" data-en="Get Quote →">اطلب عرض سعر ←</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JAZEERA BRAND -->
+<section class="brand-section" id="jazeera">
+  <div class="container">
+    <div class="brand-grid">
+      <div class="brand-info" data-animate>
+        <span class="brand-name">JAZEERA · الجزيرة</span>
+        <h2 data-ar="ملح الجزيرة — التغليف الورقي البيئي" data-en="Jazeera Salt — Eco Paper Packaging">ملح الجزيرة — التغليف الورقي البيئي</h2>
+        <p data-ar="ملح طبيعي صحي معالج باليود معبأ في كيس ورقي صديق للبيئة وزن 1 كيلوغرام. الخيار الأمثل للأسواق التي تفضل التغليف المستدام القابل للتحلل." data-en="Natural healthy iodized salt packaged in eco-friendly 1 kg paper bag. The ideal choice for markets that prefer sustainable biodegradable packaging.">
+          ملح طبيعي صحي معالج باليود معبأ في كيس ورقي صديق للبيئة وزن 1 كيلوغرام. الخيار الأمثل للأسواق التي تفضل التغليف المستدام القابل للتحلل.
+        </p>
+
+        <div class="brand-specs">
+          <div class="spec-item">
+            <div class="label" data-ar="الوزن" data-en="Weight">الوزن</div>
+            <div class="value">1 KG</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="نسبة اليود" data-en="Iodine">نسبة اليود</div>
+            <div class="value">15 – 40 mg/kg</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="التغليف" data-en="Packaging">التغليف</div>
+            <div class="value" data-ar="🌿 ورقي صديق للبيئة" data-en="🌿 Eco Paper">🌿 ورقي صديق للبيئة</div>
+          </div>
+          <div class="spec-item">
+            <div class="label" data-ar="مدة الصلاحية" data-en="Shelf Life">مدة الصلاحية</div>
+            <div class="value" data-ar="سنتان من الإنتاج" data-en="2 years from production">سنتان من الإنتاج</div>
+          </div>
+        </div>
+
+        <ul class="brand-uses">
+          <li data-ar="المتاجر التي تتبنى الاستدامة" data-en="Sustainability-focused stores">المتاجر التي تتبنى الاستدامة</li>
+          <li data-ar="الأسواق العضوية والصحية" data-en="Organic and health markets">الأسواق العضوية والصحية</li>
+          <li data-ar="المنازل المهتمة بالبيئة" data-en="Eco-conscious households">المنازل المهتمة بالبيئة</li>
+          <li data-ar="الفنادق ذات السياسات الخضراء" data-en="Hotels with green policies">الفنادق ذات السياسات الخضراء</li>
+        </ul>
+
+        <a href="contact.html?product=jazeera" class="btn-primary" data-ar="اطلب عرض سعر ←" data-en="Get Quote →">اطلب عرض سعر ←</a>
+      </div>
+
+      <div class="brand-visual carousel" data-animate>
+        <div class="carousel-track">
+          <img src="assets/images/products/jazeera-1kg.webp" class="carousel-slide active" alt="Jazeera Salt 1KG Paper">
+          <img src="assets/images/products/jazeera-row.webp" class="carousel-slide" alt="Jazeera Salt Packs Display">
+        </div>
+        <button class="carousel-arrow prev" aria-label="Previous">‹</button>
+        <button class="carousel-arrow next" aria-label="Next">›</button>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" data-slide="0" aria-label="Image 1"></button>
+          <button class="carousel-dot" data-slide="1" aria-label="Image 2"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEED CUBES SECTION -->
+<section class="cubes-section" id="cubes">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow" style="color: #E63450" data-ar="مكعبات الأعلاف" data-en="Animal Feed Cubes">مكعبات الأعلاف</div>
+      <h2 class="section-title" data-ar="خمسة ألوان · خمس تركيبات حسب المواصفات الألمانية" data-en="Five Colors · Five Formulations per German Standards">خمسة ألوان · خمس تركيبات حسب المواصفات الألمانية</h2>
+      <p class="section-sub" data-ar="تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة." data-en="Feed cubes are manufactured per a precise blend with specific types and quantities according to German specifications of the vitamins and minerals animals need per veterinary requirements — enhancing health, immunity, and production density at the highest quality standards.">
+        تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة.
+      </p>
+      <div class="cubes-tagline" data-ar="“سر تفوق الهجن القطرية”" data-en="“The Secret Behind the Superiority of Qatari Racing Camels”">“سر تفوق الهجن القطرية”</div>
+    </div>
+
+    <div class="cubes-grid">
+      <div class="cube-card" data-animate>
+        <img src="assets/images/products/cubes-blue.webp" alt="Blue feed cube">
+        <h4 data-ar="الأزرق · النشاط" data-en="Blue · Vitality">الأزرق · النشاط</h4>
+        <p class="cube-desc" data-ar="دعم النشاط والحيوية وفتح الشهية والنمو" data-en="Supports activity, vitality, appetite & growth">دعم النشاط والحيوية وفتح الشهية والنمو</p>
+      </div>
+      <div class="cube-card" data-animate>
+        <img src="assets/images/products/cubes-red.webp" alt="Red feed cube">
+        <h4 data-ar="الأحمر · المناعة والنمو" data-en="Red · Immunity & Growth">الأحمر · المناعة والنمو</h4>
+        <p class="cube-desc" data-ar="دعم المناعة ودعم النمو والوقاية من الأمراض" data-en="Immune support, growth support & disease prevention">دعم المناعة ودعم النمو والوقاية من الأمراض</p>
+      </div>
+      <div class="cube-card" data-animate>
+        <img src="assets/images/products/cubes-yellow.webp" alt="Yellow feed cube">
+        <h4 data-ar="الأصفر · الوقاية" data-en="Yellow · Protection">الأصفر · الوقاية</h4>
+        <p class="cube-desc" data-ar="زيادة المناعة ومقاومة الأمراض والطفيليات" data-en="Boosts immunity, resists diseases & parasites">زيادة المناعة ومقاومة الأمراض والطفيليات</p>
+      </div>
+      <div class="cube-card" data-animate>
+        <img src="assets/images/products/cubes-green.webp" alt="Green feed cube">
+        <h4 data-ar="الأخضر · الإنجاب" data-en="Green · Reproduction">الأخضر · الإنجاب</h4>
+        <p class="cube-desc" data-ar="للتزاوج ورفع كفاءة الإنجاب" data-en="For mating & improved reproductive efficiency">للتزاوج ورفع كفاءة الإنجاب</p>
+      </div>
+      <div class="cube-card" data-animate>
+        <img src="assets/images/products/cubes-white.webp" alt="White feed cube">
+        <h4 data-ar="الأبيض · التسمين" data-en="White · Fattening">الأبيض · التسمين</h4>
+        <p class="cube-desc" data-ar="لفتح الشهية وزيادة شرب الماء والتسمين" data-en="Stimulates appetite, boosts water intake & fattening">لفتح الشهية وزيادة شرب الماء والتسمين</p>
+      </div>
+    </div>
+
+    <div class="cubes-highlight" data-animate>
+      <span class="cubes-highlight-icon">⭐</span>
+      <p data-ar="تُعدّ مكعبات الأعلاف من أشهر المنتجات الخليجية والأكثر طلباً في أسواق الخليج العربي." data-en="Feed cubes are among the most renowned Gulf products and the most in-demand across GCC markets.">تُعدّ مكعبات الأعلاف من أشهر المنتجات الخليجية والأكثر طلباً في أسواق الخليج العربي.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 50px;">
+      <a href="contact.html?product=cubes" class="btn-primary" data-ar="اطلب طلبية مكعبات ←" data-en="Order Cubes →">اطلب طلبية مكعبات ←</a>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIAL SALT / JUMBO BAG -->
+<section class="industrial-section" id="industrial">
+  <div class="container">
+    <div class="industrial-grid">
+      <div data-animate>
+        <div class="section-eyebrow" style="color: #E63450" data-ar="الملح الصناعي" data-en="Industrial Salt">الملح الصناعي</div>
+        <h2 style="font-size: clamp(28px,3.6vw,42px); margin-bottom: 16px;" data-ar="الجامبو باج 1500 كغ — للطلبيات الضخمة" data-en="Jumbo Bag 1500 KG — For Bulk Orders">الجامبو باج 1500 كغ — للطلبيات الضخمة</h2>
+        <p style="color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; margin-bottom: 32px;" data-ar="نوفر الملح الصناعي بأحجام صناعية ضخمة للمصانع والمشاريع الكبرى والتصدير. حسب المواصفات المطلوبة من كل عميل." data-en="We supply industrial salt in large industrial sizes for factories, major projects, and export. Per the required specifications of each client.">
+          نوفر الملح الصناعي بأحجام صناعية ضخمة للمصانع والمشاريع الكبرى والتصدير. حسب المواصفات المطلوبة من كل عميل.
+        </p>
+
+        <div class="industrial-card">
+          <span class="weight-tag">1500 KG</span>
+          <h3 data-ar="جامبو باج (Big Bag)" data-en="Jumbo Bag (Big Bag)">جامبو باج (Big Bag)</h3>
+          <p data-ar="للمصانع الكبرى ومحطات تنقية المياه، تليين المياه، إذابة الجليد، والصناعات الكيميائية." data-en="For large factories and water purification plants, water softening, ice melting, and chemical industries.">
+            للمصانع الكبرى ومحطات تنقية المياه، تليين المياه، إذابة الجليد، والصناعات الكيميائية.
+          </p>
+        </div>
+
+        <div class="industrial-card">
+          <span class="weight-tag">25 KG</span>
+          <h3 data-ar="كيس صناعي بمواصفات مخصصة" data-en="Custom Spec Industrial Bag">كيس صناعي بمواصفات مخصصة</h3>
+          <p data-ar="ملح صناعي بدرجات نقاء ومقاسات حبيبات حسب المواصفات الفنية للعميل." data-en="Industrial salt with purity grades and grain sizes per client's technical specifications.">
+            ملح صناعي بدرجات نقاء ومقاسات حبيبات حسب المواصفات الفنية للعميل.
+          </p>
+        </div>
+
+        <a href="contact.html?product=industrial" class="btn-primary" style="margin-top: 24px;" data-ar="اطلب عرض مخصص ←" data-en="Request Custom Quote →">اطلب عرض مخصص ←</a>
+      </div>
+
+      <div class="industrial-visual" data-animate>
+        <img src="assets/images/factory/warehouse-bags.webp" alt="ICI Industrial Salt Warehouse">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding: 80px 0; background: var(--salt-cream); text-align: center;">
+  <div class="container">
+    <h2 style="font-size: clamp(28px,4vw,42px); margin-bottom: 16px;" data-ar="لم تجد ما تبحث عنه؟" data-en="Didn't find what you need?">لم تجد ما تبحث عنه؟</h2>
+    <p style="font-size: 17px; color: var(--text-mid); margin-bottom: 32px;" data-ar="نوفر منتجات مخصصة حسب المواصفات والكميات المطلوبة. تواصل معنا للحصول على عرض مخصص." data-en="We offer custom products per required specifications and quantities. Contact us for a custom quote.">
+      نوفر منتجات مخصصة حسب المواصفات والكميات المطلوبة. تواصل معنا للحصول على عرض مخصص.
+    </p>
+    <a href="contact.html" class="btn-primary" data-ar="تواصل معنا الآن ←" data-en="Contact Us Now →">تواصل معنا الآن ←</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/brand/logo-ici.png" alt="ICI">
+        <h4 data-ar="الشركة الدولية للصناعات" data-en="International Industries Co.">الشركة الدولية للصناعات</h4>
+        <p data-ar="مصنع قطري للملح بأعلى المعايير منذ 2010" data-en="Qatari salt manufacturer with premium standards since 2010">مصنع قطري للملح بأعلى المعايير منذ 2010</p>
+      </div>
+      <div class="footer-col">
+        <h5 data-ar="الموقع" data-en="Site">الموقع</h5>
+        <ul>
+          <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+          <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+          <li><a href="products.html" data-ar="المنتجات" data-en="Products">المنتجات</a></li>
+          <li><a href="contact.html" data-ar="تواصل" data-en="Contact">تواصل</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-ar="العلامات التجارية" data-en="Brands">العلامات التجارية</h5>
+        <ul>
+          <li><a href="#ocean">OCEAN</a></li>
+          <li><a href="#alrayyan">Al Rayyan</a></li>
+          <li><a href="#jazeera">Jazeera</a></li>
+          <li><a href="#cubes" data-ar="مكعبات الأعلاف" data-en="Feed Cubes">مكعبات الأعلاف</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5 data-ar="تواصل" data-en="Contact">تواصل</h5>
+        <ul>
+          <li><a href="tel:+97444434678"><span class="ltr-num">+974 4443 4678</span></a></li>
+          <li><a href="https://wa.me/97455992209"><span data-ar="واتساب" data-en="WhatsApp">واتساب</span>: <span class="ltr-num">+974 5599 2209</span></a></li>
+          <li><a href="mailto:info@icifactory.com"><span class="ltr-num">info@icifactory.com</span></a></li>
+          <li><a href="privacy.html" data-ar="سياسة الخصوصية" data-en="Privacy Policy">سياسة الخصوصية</a></li>
+          <li><a href="disclaimer.html" data-ar="إخلاء المسؤولية" data-en="Disclaimer">إخلاء المسؤولية</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 International Industries Company L.L.C.</span>
+      <span><span class="ltr-num">icifactory.com</span> · <span data-ar="صُنع في قطر" data-en="Made in Qatar">صُنع في قطر</span> 🇶🇦</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/97455992209" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
