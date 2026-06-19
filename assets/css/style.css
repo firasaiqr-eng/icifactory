@@ -225,11 +225,18 @@ html[dir="rtl"] .hero::before {
   padding: 18px; transition: all 0.25s;
 }
 .client-logo:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.client-logo img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.25s; }
+.client-logo img { max-height: 64px; max-width: 80%; object-fit: contain; transition: transform 0.25s; }
 .client-logo:hover img { transform: scale(1.05); }
 .client-logo span { font-size: 12px; color: var(--text-light); text-align: center; }
-@media (max-width: 900px) { .clients-grid { grid-template-columns: repeat(3, 1fr); } .clients-grid-4 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .clients-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) {
+  .clients-grid { grid-template-columns: repeat(3, 1fr); }
+  .clients-grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+}
+@media (max-width: 480px) {
+  .clients-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .client-logo { aspect-ratio: 16/10; padding: 14px; }
+  .client-logo img { max-height: 52px; max-width: 78%; }
+}
 
 /* ============ TRUST BAR ============ */
 .trust-bar {
