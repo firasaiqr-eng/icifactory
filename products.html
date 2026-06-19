@@ -33,11 +33,11 @@
     .brand-section:nth-child(odd) { background: var(--salt-white); }
     .brand-section:nth-child(even) { background: var(--salt-cream); }
 
-    .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .brand-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: stretch; }
     .brand-grid.reverse { direction: ltr; }
     html[dir="rtl"] .brand-grid.reverse > * { direction: rtl; }
 
-    .brand-visual { aspect-ratio: 1; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--salt-white); display: flex; align-items: center; justify-content: center; padding: 40px; }
+    .brand-visual { min-height: 380px; border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--salt-white); display: flex; align-items: center; justify-content: center; padding: 40px; }
     .brand-visual img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
     /* Image carousel */
@@ -339,9 +339,6 @@
     <div class="section-header">
       <h2 class="section-eyebrow" style="color: #E63450" data-ar="مكعبات الأعلاف" data-en="Animal Feed Cubes">مكعبات الأعلاف</h2>
       <h3 class="section-title" data-ar="خمسة ألوان · خمس تركيبات حسب المواصفات الألمانية" data-en="Five Colors · Five Formulations per German Standards">خمسة ألوان · خمس تركيبات حسب المواصفات الألمانية</h3>
-      <p class="section-sub" data-ar="تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة." data-en="Feed cubes are manufactured per a precise blend with specific types and quantities according to German specifications of the vitamins and minerals animals need per veterinary requirements — enhancing health, immunity, and production density at the highest quality standards.">
-        تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة.
-      </p>
       <div class="cubes-tagline" data-ar="“سر تفوق الهجن القطرية”" data-en="“The Secret Behind the Superiority of Qatari Racing Camels”">“سر تفوق الهجن القطرية”</div>
     </div>
 
@@ -375,7 +372,7 @@
 
     <div class="cubes-highlight" data-animate>
       <span class="cubes-highlight-icon">⭐</span>
-      <p data-ar="تُعدّ مكعبات الأعلاف من أشهر المنتجات الخليجية والأكثر طلباً في أسواق الخليج العربي." data-en="Feed cubes are among the most renowned Gulf products and the most in-demand across GCC markets.">تُعدّ مكعبات الأعلاف من أشهر المنتجات الخليجية والأكثر طلباً في أسواق الخليج العربي.</p>
+      <p data-ar="تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة." data-en="Feed cubes are manufactured per a precise blend with specific types and quantities according to German specifications of the vitamins and minerals animals need per veterinary requirements — enhancing health, immunity, and production density at the highest quality standards.">تُصنّع مكعبات الأعلاف وفق خلطة دقيقة بأنواع وكميات محددة حسب المواصفات الألمانية من الفيتامينات والمعادن التي تحتاجها الحيوانات وفق احتياجات الطب البيطري — مما يعزز الصحة والمناعة وكثافة الإنتاج بأعلى معايير الجودة.</p>
     </div>
 
     <div style="text-align: center; margin-top: 50px;">
