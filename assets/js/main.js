@@ -90,27 +90,52 @@
     const form = document.querySelector('.contact-form');
     if (!form) return;
 
+    // WhatsApp number used as fallback if email delivery fails
+    const WHATSAPP_NUMBER = '97455465513';
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      const isAr = document.documentElement.lang === 'ar';
       const btn = form.querySelector('.btn-submit');
-      const originalText = btn.textContent;
-      btn.textContent = '...';
-      btn.disabled = true;
+      const originalText = btn ? btn.textContent : '';
+      if (btn) { btn.textContent = isAr ? 'جارٍ الإرسال…' : 'Sending…'; btn.disabled = true; }
 
       const data = {
-        name: form.querySelector('[name="name"]').value,
-        company: form.querySelector('[name="company"]').value,
-        phone: form.querySelector('[name="phone"]').value,
-        email: form.querySelector('[name="email"]').value,
-        product: form.querySelector('[name="product"]').value,
-        message: form.querySelector('[name="message"]').value,
+        name: (form.querySelector('[name="name"]') || {}).value || '',
+        company: (form.querySelector('[name="company"]') || {}).value || '',
+        phone: (form.querySelector('[name="phone"]') || {}).value || '',
+        email: (form.querySelector('[name="email"]') || {}).value || '',
+        product: (form.querySelector('[name="product"]') || {}).value || '',
+        message: (form.querySelector('[name="message"]') || {}).value || '',
       };
 
-      // Try Formspree if configured, else open mailto
+      // Build WhatsApp fallback link with all details pre-filled
+      const lines = isAr ? [
+        '🧾 طلب عرض سعر جديد من الموقع', '',
+        '👤 الاسم: ' + data.name,
+        data.company ? '🏢 الشركة: ' + data.company : '',
+        '📞 الهاتف: ' + data.phone,
+        data.email ? '📧 البريد: ' + data.email : '',
+        '📦 المنتج: ' + data.product,
+        data.message ? '📝 الرسالة: ' + data.message : '',
+      ] : [
+        '🧾 New quote request from website', '',
+        '👤 Name: ' + data.name,
+        data.company ? '🏢 Company: ' + data.company : '',
+        '📞 Phone: ' + data.phone,
+        data.email ? '📧 Email: ' + data.email : '',
+        '📦 Product: ' + data.product,
+        data.message ? '📝 Message: ' + data.message : '',
+      ];
+      const waURL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' +
+                    encodeURIComponent(lines.filter(Boolean).join('\n'));
+
       const formspreeId = form.getAttribute('data-formspree');
       try {
         if (formspreeId && formspreeId !== 'YOUR_FORMSPREE_ID') {
-          const res = await fetch(`https://formspree.io/f/${formspreeId}`, {
+          const res = await fetch('https://formspree.io/f/' + formspreeId, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify(data)
@@ -120,17 +145,13 @@
             return;
           }
         }
-        // Fallback to mailto
-        const subject = encodeURIComponent('استفسار من الموقع - ' + (data.product || 'عام'));
-        const body = encodeURIComponent(
-          `الاسم: ${data.name}\nالشركة: ${data.company}\nالهاتف: ${data.phone}\nالبريد: ${data.email}\nالمنتج: ${data.product}\n\nالرسالة:\n${data.message}`
-        );
-        window.location.href = `mailto:info@icifactory.com?subject=${subject}&body=${body}`;
+        // Formspree not configured or returned an error → WhatsApp fallback
+        window.open(waURL, '_blank');
+        setTimeout(() => { window.location.href = 'thanks.html'; }, 600);
       } catch (err) {
-        alert('حدث خطأ. يرجى التواصل عبر واتساب: +974 55992209');
-      } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
+        // Network error → WhatsApp fallback
+        window.open(waURL, '_blank');
+        if (btn) { btn.textContent = originalText; btn.disabled = false; }
       }
     });
   }
